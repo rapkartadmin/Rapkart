@@ -1915,3 +1915,41 @@ section {
 .footer-logo{
   max-height: 135px;
 }
+
+#productImageContainer{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rapkart-slide img{
+  height: 100%;
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.rapkart-buynow{
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  color: #fff;
+  margin-top: 15px;
+  border: 2px #fff solid;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.rapkart-buynow:hover{
+  background: #fff;
+  color: rgba(36, 135, 206, 1);
+  text-decoration: none;
+}
+
+.rapkart-buynow::before{
+  content: "Buy Now";
+}

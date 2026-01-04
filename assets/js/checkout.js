@@ -2,13 +2,11 @@ const productArray = [
     {
         productId: 1,
         productTitle:"Custom Moon Lamp",
-        productCost: 800,
+        productCost: 666,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "https://5.imimg.com/data5/SELLER/Default/2022/11/OZ/WT/CP/160448689/10cm-500x500.jpg"
         ],
-        productDimensions:"14cm x 14cm x 20cm",
+        productDimensions:"14cm x 14cm x 14cm",
         productWeight:"250g",
         productOutputVoltage:"12v",
         productInputVoltage:"220v",
@@ -26,19 +24,31 @@ const productArray = [
     {
         productId: 2,
         productTitle:"Custom Bed Lamp",
-        productCost: 1200,
-        productImage:["https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg","https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+        productCost: 888,
+        productImage:[
+            "https://3dthis.com/images/litho/litho.jpg",
         ],
-        productDimensions:"25cm x 25cm x 25cm",
+        productDimensions:"12cm x 12cm x 20cm",
         productWeight:"500g",
         productOutputVoltage:"12v",
         productInputVoltage:"220v",
-        productColor:"White",
+        productColor:"White | Orange",
         productFileFields:[
             {
-                fieldName:"userImage",
-                fieldTitle:"Custom Image",
+                fieldName:"userImageOne",
+                fieldTitle:"Custom Image One",
+            },
+            {
+                fieldName:"userImageTwo",
+                fieldTitle:"Custom Image Two",
+            },
+            {
+                fieldName:"userImageThree",
+                fieldTitle:"Custom Image Three",
+            },
+            {
+                fieldName:"userImageFour",
+                fieldTitle:"Custom Image Four",
             }
         ],
         productTextFields:[],
@@ -49,21 +59,33 @@ const productArray = [
         productId: 3,
         productTitle:"Custom Cube",
         productCost: 777,
-        productImage:["https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg","https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+        productImage:[
+            "https://i.pinimg.com/736x/57/b7/b8/57b7b8c9cb974bd9fc49f2c48cc99bd1.jpg"
         ],
-        productDimensions:"30cm x 10cm x 5cm",
+        productDimensions:"15cm x 15cm x 15cm",
         productWeight:"300g",
         productOutputVoltage:"N/A",
         productInputVoltage:"N/A",
         productColor:"Black",
-        productFileFields:[],
-        productTextFields:[
+        productFileFields:[
             {
-                fieldName:"customName",
-                fieldTitle:"Custom Name",
-            }
+                fieldName:"customImageOne",
+                fieldTitle:"Top Side",
+            },
+            {
+                fieldName:"customImageTwo",
+                fieldTitle:"Front Side",
+            },
+            {
+                fieldName:"customImageThree",
+                fieldTitle:"Left Side",
+            },
+            {
+                fieldName:"customImageFour",
+                fieldTitle:"Right Side",
+            },
         ],
+        productTextFields:[],
         productExpectedDeliveryDate:4,
         productMaterial:"Plastic"
     },
@@ -72,15 +94,13 @@ const productArray = [
         productTitle:"Custom 3D Heart",
         productCost: 999,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "https://itslitho.com/wp-content/uploads/2022/01/272167033_464746065314239_7749669837756212223_n-1.png"
         ],
         productDimensions:"14cm x 14cm x 20cm",
         productWeight:"250g",
         productOutputVoltage:"12v",
         productInputVoltage:"220v",
-        productColor:"White",
+        productColor:"White | Red | Black",
         productFileFields:[
             {
                 fieldName:"userImage",
@@ -96,22 +116,20 @@ const productArray = [
         productTitle:"Custom Key Chain",
         productCost: 499,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "https://i.pinimg.com/originals/98/88/95/988895a7b66dce1c603c61c71e0f36f5.jpg"
         ],
-        productDimensions:"14cm x 14cm x 20cm",
-        productWeight:"250g",
-        productOutputVoltage:"12v",
-        productInputVoltage:"220v",
+        productDimensions:"5cm x 3cm x 3cm",
+        productWeight:"50g",
+        productOutputVoltage:"NA",
+        productInputVoltage:"NA",
         productColor:"White",
-        productFileFields:[
+        productFileFields:[],
+        productTextFields:[
             {
-                fieldName:"userImage",
-                fieldTitle:"Custom Image",
+                fieldName:"customName",
+                fieldTitle:"Custom Name",
             }
         ],
-        productTextFields:[],
         productExpectedDeliveryDate:5,
         productMaterial:"Plastic"
     },
@@ -120,20 +138,30 @@ const productArray = [
         productTitle:"Custom Trio Box",
         productCost: 888,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "https://i.ytimg.com/vi/mJfR_HKHjUg/mqdefault.jpg"
         ],
-        productDimensions:"14cm x 14cm x 20cm",
+        productDimensions:"15cm x 15cm x 7cm",
         productWeight:"250g",
         productOutputVoltage:"12v",
         productInputVoltage:"220v",
         productColor:"White",
         productFileFields:[
             {
-                fieldName:"userImage",
-                fieldTitle:"Custom Image",
-            }
+                fieldName:"userImageOne",
+                fieldTitle:"Left Top Image",
+            },
+            {
+                fieldName:"userImageTwo",
+                fieldTitle:"Center Image",
+            },
+            {
+                fieldName:"userImageThree",
+                fieldTitle:"Left Bottom Image",
+            },
+            {
+                fieldName:"userImageFour",
+                fieldTitle:"Right Bottom Image",
+            },
         ],
         productTextFields:[],
         productExpectedDeliveryDate:5,
@@ -144,22 +172,20 @@ const productArray = [
         productTitle:"Custom Key Holder",
         productCost: 499,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "https://makerworld.bblmw.com/makerworld/model/USeb2eec216450a3/design/2025-02-03_a4d8e8181c5a9.jpeg?x-oss-process=image%2Fresize%2Cw_400%2Fformat%2Cwebp"
         ],
-        productDimensions:"14cm x 14cm x 20cm",
+        productDimensions:"10cm x 10cm x 5cm",
         productWeight:"250g",
-        productOutputVoltage:"12v",
-        productInputVoltage:"220v",
+        productOutputVoltage:"NA",
+        productInputVoltage:"NA",
         productColor:"White",
-        productFileFields:[
+        productFileFields:[],
+        productTextFields:[
             {
-                fieldName:"userImage",
-                fieldTitle:"Custom Image",
+                fieldName:"customText",
+                fieldTitle:"Custom Text",
             }
         ],
-        productTextFields:[],
         productExpectedDeliveryDate:5,
         productMaterial:"Plastic"
     },
@@ -168,39 +194,39 @@ const productArray = [
         productTitle:"3D Flip Name",
         productCost: 450,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "https://timeto3d.com/cdn/shop/files/Flip-name-plank_1024x1024.jpg?v=1688037607"
         ],
-        productDimensions:"14cm x 14cm x 20cm",
+        productDimensions:"14cm x 14cm x 5cm",
         productWeight:"250g",
-        productOutputVoltage:"12v",
-        productInputVoltage:"220v",
-        productColor:"White",
-        productFileFields:[
+        productOutputVoltage:"NA",
+        productInputVoltage:"NA",
+        productColor:"White | Red",
+        productFileFields:[],
+        productTextFields:[
             {
-                fieldName:"userImage",
-                fieldTitle:"Custom Image",
+                fieldName:"customNameOne",
+                fieldTitle:"Custom Name One",
+            },
+            {
+                fieldName:"customNameTwo",
+                fieldTitle:"Custom Name Two",
             }
         ],
-        productTextFields:[],
         productExpectedDeliveryDate:5,
         productMaterial:"Plastic"
     },
      {
         productId: 9,
-        productTitle:"Pen Stand",
+        productTitle:"Custom Pen Stand",
         productCost: 777,
         productImage:[
-            "https://m.media-amazon.com/images/I/71ZqQVLSjdL._AC_UF350,350_QL80_.jpg",
-            "https://zocivoci.com/cdn/shop/files/91qpvX6OkpL._SL1500.jpg?v=1764847441",
-            "https://rukminim2.flixcart.com/image/480/640/xif0q/table-lamp/b/d/1/3d-personalized-photo-moon-light-7373105930-whatsapp-your-photo-original-imagkegrgkqzthfu.jpeg?q=90"
+            "./assets/img/portfolio/litho_pen_stand.jpg"
         ],
-        productDimensions:"14cm x 14cm x 20cm",
+        productDimensions:"12cm x 12cm x 10cm",
         productWeight:"250g",
         productOutputVoltage:"12v",
         productInputVoltage:"220v",
-        productColor:"White",
+        productColor:"White | Orange",
         productFileFields:[
             {
                 fieldName:"userImage",
@@ -239,7 +265,7 @@ function renderCheckoutPage(product) {
     if (product.productFileFields.length === 0) {
         fileFieldsContainer.style.display = 'none';
     }else{
-        fileFieldsContainer.style.display = 'block';
+        fileFieldsContainer.style.display = 'table-caption';
         product.productFileFields.forEach(field => {
         const label = document.createElement('span');
         label.innerText = field.fieldTitle + ": ";
@@ -257,7 +283,7 @@ function renderCheckoutPage(product) {
     if(product.productTextFields.length === 0){
         textFieldsContainer.style.display = 'none';
     }else{
-        textFieldsContainer.style.display = 'block';
+        textFieldsContainer.style.display = 'table-caption';
         product.productTextFields.forEach(field => {
         const label = document.createElement('span');
         label.innerText = field.fieldTitle + ": ";
@@ -274,7 +300,7 @@ function renderCheckoutPage(product) {
 
     product.productImage.forEach((imageUrl, index) => {
         let singleImage = `
-            <div class="swiper-slide">
+            <div class="swiper-slide rapkart-slide">
                 <img src="${imageUrl}" alt="">
             </div>
         `;
