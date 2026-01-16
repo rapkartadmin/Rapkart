@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     workshopRadios.forEach(radio => {
     radio.addEventListener('change', function() {
             const isStudent = this.value.includes('STDNT');
-            priceInput.value = this.value === 'WRK_PROF' ? '750' : (this.value === 'GVT_STDNT' ? '600' : '450');
+            priceInput.value = this.value === 'WRK_PROF' ? '750' : (this.value === 'GVT_STDNT' ? '450' : '600');
             collegeDetails.style.display = isStudent ? 'block' : 'none';
             // Clear specific college errors when switching to professional
             if(!isStudent) {

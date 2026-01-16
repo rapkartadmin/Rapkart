@@ -1962,7 +1962,7 @@ section {
 
 .hero-banner {
   height: 70vh;
-  min-height: 240px;
+  min-height: 600px;
   background: url("../img/banner/website_banner.jpg") center / cover no-repeat;
 }
 
