@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const base_url = "http://localhost:8080/"
+    const base_url = "https://api.rapkart.in/"
 
     const form = document.getElementById('registrationForm');
     const workshopRadios = document.querySelectorAll('input[name="workshop"]');
