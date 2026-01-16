@@ -105,7 +105,7 @@
       </div>
     </section><!-- End Breadcrumbs -->
     <!-- ======= Inner Page Section ======= -->
-<section class="inner-page">
+<section class="inner-page" style="padding-top:20px">
   <div class="container">
     <div class="hero-banner d-flex align-items-center mb-4">
     </div>
@@ -125,6 +125,26 @@
         <li>Email: <a href="mailto:support@rapkart.in">support@rapkart.in</a></li>
       </ul>
     </p>
+    <p>
+      Workshop Benefits:
+      <ul>
+        <li>Hands-On Experience</li>
+        <li>Complete end-to-end knowldege in 3D Printing</li>
+        <li>Certificate Provided</li>
+      </ul>
+    </p>
+    <p>
+      Registration Instructions: 
+      <ul>
+        <li>Full Name and College Name must contain only characters and spaces and minimum length should be 5.</li>
+        <li>Mobile Number and email should be in the valid format.</li>
+        <li>Email must be validated to enable the register button.</li>
+        <li>Do not use already registered and paid email for verification.</li>
+        <li>ID Proof if your a college student should be uploaded only in jpg,png and pdf format within 2mb file size.</li>
+        <li>We have all the rights to upgrade or cancel your registration and refund the amount if your id proof is invalid.</li>
+        <li>Valid registrations will not be applicable for refund.</li>
+      </ul>
+    </p>
 
     <h1 class="mb-4 text-center">Registration Form</h1>
 
@@ -133,6 +153,10 @@
         <label for="name" class="form-label fw-semibold">Full Name</label>
         <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name (which will be marked on certificate)" required>
         <span class="text-danger small" id="nameError">*</span>
+        <small id="otpStatus" class="form-text text-muted">
+          only letters and space
+        </small>
+        
       </div>
 
       <!-- Phone -->
@@ -240,7 +264,7 @@
           <input type="radio" id="professional" name="workshop" 
                  value="WRK_PROF" class="form-check-input" required>
           <label for="professional" class="form-check-label">
-            Working Professional
+            Working Professional - ₹ 750
           </label>
         </div>
 
@@ -248,7 +272,7 @@
           <input type="radio" id="privateCollegeStudents" name="workshop"
                  value="PVT_STDNT" class="form-check-input" required>
           <label for="privateCollegeStudents" class="form-check-label">
-            Private College Student
+            Private College Student - ₹ 600
           </label>
         </div>
 
@@ -256,7 +280,7 @@
           <input type="radio" id="governmentCollegeStudents" name="workshop"
                  value="GVT_STDNT" class="form-check-input" required>
           <label for="governmentCollegeStudents" class="form-check-label">
-            Government College Student
+            Government College Student - ₹ 450
           </label>
         </div>
           <span class="text-danger small" id="workshopError">*</span>
@@ -285,7 +309,11 @@
           <label for="collegeName" class="form-label">College Name</label>
           <input type="text" id="collegeName" name="collegeName"
                  class="form-control" placeholder="Enter your college name">
-                   <span class="text-danger small" id="collegeNameError">*</span>
+                 <span class="text-danger small" id="collegeNameError">*</span>
+                 <small id="otpStatus" class="form-text text-muted">
+                  only letters and space
+                </small>
+                   
 
         </div>
 
