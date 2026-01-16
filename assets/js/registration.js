@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     workshopRadios.forEach(radio => {
     radio.addEventListener('change', function() {
             const isStudent = this.value.includes('STDNT');
-            priceInput.value = this.value === 'WRK_PROF' ? '100' : (this.value === 'GVT_STDNT' ? '50' : '75');
+            priceInput.value = this.value === 'WRK_PROF' ? '750' : (this.value === 'GVT_STDNT' ? '600' : '450');
             collegeDetails.style.display = isStudent ? 'block' : 'none';
             // Clear specific college errors when switching to professional
             if(!isStudent) {
@@ -218,11 +218,12 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("workshopError").innerText = "Select a Category.";
             isValid = false;
         } else if (selectedWorkshop.value !== "WRK_PROF") {
+            const nameRegex = /^[A-Za-z\s]+$/;
             const cName = document.getElementById("collegeName").value.trim();
             const cFile = document.getElementById("collegeIdFile").files[0];
 
-            if (!cName) {
-                document.getElementById("collegeNameError").innerText = "College name required.";
+            if (!cName || !nameRegex.test(cName)) {
+                document.getElementById("collegeNameError").innerText = "College name is either empty or invalid";
                 isValid = false;
             }
             if (!cFile) {

@@ -133,6 +133,10 @@
         <label for="name" class="form-label fw-semibold">Full Name</label>
         <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name (which will be marked on certificate)" required>
         <span class="text-danger small" id="nameError">*</span>
+        <small id="otpStatus" class="form-text text-muted">
+          only letters and space
+        </small>
+        
       </div>
 
       <!-- Phone -->
@@ -240,7 +244,7 @@
           <input type="radio" id="professional" name="workshop" 
                  value="WRK_PROF" class="form-check-input" required>
           <label for="professional" class="form-check-label">
-            Working Professional
+            Working Professional - ₹ 750
           </label>
         </div>
 
@@ -248,7 +252,7 @@
           <input type="radio" id="privateCollegeStudents" name="workshop"
                  value="PVT_STDNT" class="form-check-input" required>
           <label for="privateCollegeStudents" class="form-check-label">
-            Private College Student
+            Private College Student - ₹ 600
           </label>
         </div>
 
@@ -256,7 +260,7 @@
           <input type="radio" id="governmentCollegeStudents" name="workshop"
                  value="GVT_STDNT" class="form-check-input" required>
           <label for="governmentCollegeStudents" class="form-check-label">
-            Government College Student
+            Government College Student - ₹ 450
           </label>
         </div>
           <span class="text-danger small" id="workshopError">*</span>
@@ -285,7 +289,11 @@
           <label for="collegeName" class="form-label">College Name</label>
           <input type="text" id="collegeName" name="collegeName"
                  class="form-control" placeholder="Enter your college name">
-                   <span class="text-danger small" id="collegeNameError">*</span>
+                 <span class="text-danger small" id="collegeNameError">*</span>
+                 <small id="otpStatus" class="form-text text-muted">
+                  only letters and space
+                </small>
+                   
 
         </div>
 
