@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Patterns
         const namePattern = /^[A-Za-z ]+$/;
-        const phonePattern = /^[0-9]{10}$/;
+        const phonePattern = /^[6-9]\d{9}$/;
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         let isValid = true;
@@ -296,6 +296,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
         }
     });
+
+    const fileInput = document.getElementById("collegeIdFile");
+
+    fileInput.addEventListener("change", () => {
+        document.getElementById("labelFileName").innerText="Upload College ID Card"
+        document.getElementById("collegeFileSuccess").innerText=""
+        document.getElementById("collegeFileError").innerText="*"
+    const file = fileInput.files[0];
+
+    const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+    const ALLOWED_TYPES = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png",
+    ];
+
+    // No file selected
+    if (!file) return;
+
+    // Validate file type
+    if (!ALLOWED_TYPES.includes(file.type)) {
+        document.getElementById("collegeFileError").innerText="Only PDF, JPG, and PNG files are allowed"
+        fileInput.value = ""; // reset input
+        return;
+    }
+
+    // Validate file size
+    if (file.size > MAX_SIZE) {
+        document.getElementById("collegeFileError").innerText="File size must be less than 2 MB";
+        fileInput.value = ""; // reset input
+        return;
+    }
+
+    // Success
+    // console.log("Valid file selected:", file.name);
+    document.getElementById("labelFileName").innerText=file.name
+    document.getElementById("collegeFileSuccess").innerText="ID Proof Uploaded Successfully";
+    });
+
 
     function genTransId(){
         const timeStamp = new Date().getTime()

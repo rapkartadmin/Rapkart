@@ -1953,3 +1953,39 @@ section {
 .rapkart-buynow::before{
   content: "Buy Now";
 }
+
+.page-border{
+  background-image: url("https://img.freepik.com/premium-vector/blue-diagonal-stripes-pattern-white-background_713536-65.jpg");
+  background-repeat: repeat-x;
+  height: 50px;
+}
+
+.hero-banner {
+  height: 70vh;
+  min-height: 240px;
+  background: url("../img/banner/website_banner.jpg") center / cover no-repeat;
+}
+
+@media (max-width: 992px) {
+  .hero-banner {
+    height: 60vh;
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    height: auto;
+    min-height: 360px;
+    padding: 80px 0;
+    background-position: center top;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    min-height: 300px;
+    padding: 70px 0;
+  }
+}
+

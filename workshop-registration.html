@@ -80,7 +80,7 @@
           <li><a class="nav-link scrollto o" href="./index.html#portfolio">Products</a></li>
           <li><a class="nav-link scrollto" href="./index.html#team">Team</a></li>
           <li><a class="nav-link scrollto" href="./index.html#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="./index.html#about">Get Started</a></li>
+          <li><a class="getstarted scrollto" href="./workshop-registration.html">Register</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -107,10 +107,23 @@
     <!-- ======= Inner Page Section ======= -->
 <section class="inner-page">
   <div class="container">
+    <div class="hero-banner d-flex align-items-center mb-4">
+    </div>
+    
     <p class="mb-4">
       Thank you for your interest in our workshop! To register,
       please fill out the registration form below with your details.
       We look forward to having you join us for an exciting and informative experience.
+    </p>
+    <p>
+      Workshop Details:
+      <ul>
+        <li>Instructor: <a href="https://anirudhkumaran.com/" target="_blank">Anirudh Kumaran</a></li>
+        <li>Venue: <a href="https://maps.app.goo.gl/wNirBrQj49shLhbg9" target="_blank">Janitha Towers, Landmark: Fortunes Trust, Avalahalli, Bangalore</a> </li>
+        <li>Schedule: Jan 31st 2026, 11:00 AM - 14:00 PM</li>
+        <li>Mobile: <a href="tel:+918971356468">+91 89713 56468</a></li>
+        <li>Email: <a href="mailto:support@rapkart.in">support@rapkart.in</a></li>
+      </ul>
     </p>
 
     <h1 class="mb-4 text-center">Registration Form</h1>
@@ -278,11 +291,12 @@
 
         <div class="mb-0">
           <label class="form-label d-block fw-semibold mb-2"> College ID Card</label>
-          <label for="collegeIdFile" class="form-control  bi bi-upload" >Upload College ID Card</label>
+          <label id="labelFileName" for="collegeIdFile" class="form-control  bi bi-upload" >Upload College ID Card</label>
           <input type="file" id="collegeIdFile" name="collegeIdFile"
                  class="form-control"
                  accept=".jpg,.jpeg,.png,.pdf"  hidden>
                    <span class="text-danger small" id="collegeFileError">*</span>
+                   <span class="text-success small" id="collegeFileSuccess"></span>
 
           <small class="text-muted">Accepted formats: JPG, PNG, PDF.</small>
         </div>
@@ -295,7 +309,7 @@
         </button>
       </div>
     </form>
-    <div id="payment-gateway" class="row w-100 p-2 d-none">
+    <div class="shadow-lg card my-4 rounded"><div id="payment-gateway" class="row w-100 p-2 d-none">
       <h3>Checkout Section</h3>
       <div class="form-group mt-3">
         <label for="payuFirstName">First Name</label>
@@ -340,7 +354,7 @@
         </div>
         
       </form>
-    </div>
+    </div></div>
   </div>
 </section>
 
