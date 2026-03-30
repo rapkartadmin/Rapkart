@@ -148,7 +148,8 @@
 
     <h1 class="mb-4 text-center">Registration Form</h1>
 
-<form id="registrationForm" enctype="multipart/form-data" class="p-4 p-md-5 shadow rounded bg-white" novalidate>      <!-- Full Name -->
+<form id="registrationForm" enctype="multipart/form-data" class="p-4 p-md-5 shadow rounded bg-white" novalidate>      
+      <!-- Full Name -->
       <div class="mb-3">
         <label for="name" class="form-label fw-semibold">Full Name</label>
         <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name (which will be marked on certificate)" required>
@@ -187,72 +188,57 @@
         </div>
       </div>
 
+      <!-- Email -->
       <div class="mb-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <label for="email" class="form-label fw-semibold mb-1">Email Address</label>
-          <button disabled type="button"
-                  id="editMail"
-                  class="btn btn-link btn-sm p-0">
-            Edit Email
-          </button>
-        </div>
-      
-        <div class="input-group">
-            <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
-      
-          <!-- merged send/verify icon button -->
-          <button class="btn btn-primary"
-                  type="button"
-                  id="sendOtpBtn">
-            <!-- initial icon: send -->
-            <i id="sendIcon" class="bi bi-send"></i> Send OTP
-          </button>
-      
-        </div>
-      
+        <label for="email" class="form-label fw-semibold">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="abc@gmail.com" required>
         <span class="text-danger small" id="emailError">*</span>
-        <span class="text-success small" id="emailSuccess"></span>
+        
       </div>
 
-    <!-- OTP + merged button + resend -->
-<div class="mb-3">
-  <div class="d-flex justify-content-between align-items-center">
-    <label for="otp" class="form-label fw-semibold mb-1">
-      OTP (sent to your email)
-    </label>
-    <button type="button"
-            id="resendOtp"
-            class="btn btn-link btn-sm p-0 d-none">
-      Resend OTP
-    </button>
-  </div>
+      <!-- Class Mode -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold d-block">Class Mode</label>
+        <div class="form-check form-check-inline">
+          <input checked type="radio" id="online" name="classMode" value="online" class="form-check-input" required>
+          <label for="online" class="form-check-label">Online</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="offline" name="classMode" value="offline" class="form-check-input" required>
+          <label for="offline" class="form-check-label">Offline</label>
+        </div>
+        <div>
+              <span id="classModeError" class="text-danger small">*</span>
+        </div>
+      </div>
 
-  <div class="input-group">
-    <input type="text"
-           id="otp"
-           name="otp"
-           class="form-control"
-           placeholder="Enter OTP"
-           aria-label="Enter OTP"
-           required>
+            <!-- Class Mode -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold d-block">Class Language</label>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="english" name="classLanguage" value="english" class="form-check-input" required>
+          <label for="english" class="form-check-label">English</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="tamil" name="classLanguage" value="tamil" class="form-check-input" required>
+          <label for="tamil" class="form-check-label">Tamil</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="kannada" name="classLanguage" value="kannada" class="form-check-input" required>
+          <label for="kannada" class="form-check-label">Kannada</label>
+        </div>
+        <div>
+              <span id="classLanguageError" class="text-danger small">*</span>
+        </div>
+      </div>
 
-    <!-- merged send/verify icon button -->
-    <button disabled class="btn btn-primary"
-            type="button"
-            id="otpActionBtn">
-      <!-- initial icon: send -->
-      <i id="otpIcon" class="bi bi-envelope-check-fill"></i> Verify OTP
-    </button>
-
-  </div>
-  <span class="text-danger small" id="otpError">*</span>
-  <small id="otpStatus" class="form-text text-muted">
-    Click the button to verify OTP.
-  </small>
-
-</div>
-
-
+      <!-- Ticket Quantity -->
+      <div class="mb-3">
+        <label for="ticketQnty" class="form-label fw-semibold">Number Of Seats</label>
+        <input min="1" max="10" type="number" id="ticketQnty" name="ticketQnty" class="form-control" placeholder="0" required>
+        <span class="text-danger small" id="ticketQntyError">*</span>
+        
+      </div>
 
       <!-- Workshop category -->
       <div class="mb-3">
@@ -261,10 +247,10 @@
         
 
         <div class="form-check">
-          <input type="radio" id="professional" name="workshop" 
+          <input checked type="radio" id="professional" name="workshop" 
                  value="WRK_PROF" class="form-check-input" required>
           <label for="professional" class="form-check-label">
-            Working Professional - ₹ 750
+            Working Professional
           </label>
         </div>
 
@@ -272,7 +258,7 @@
           <input type="radio" id="privateCollegeStudents" name="workshop"
                  value="PVT_STDNT" class="form-check-input" required>
           <label for="privateCollegeStudents" class="form-check-label">
-            Private College Student - ₹ 600
+            Private College Student
           </label>
         </div>
 
@@ -280,7 +266,7 @@
           <input type="radio" id="governmentCollegeStudents" name="workshop"
                  value="GVT_STDNT" class="form-check-input" required>
           <label for="governmentCollegeStudents" class="form-check-label">
-            Government College Student - ₹ 450
+            Government College Student
           </label>
         </div>
           <span class="text-danger small" id="workshopError">*</span>
@@ -293,6 +279,7 @@
         <div class="input-group">
           <span class="input-group-text">₹</span>
           <input type="text" id="price" name="price"
+                  value="750"
                  class="form-control fw-bold text-success"
                  placeholder="Select a category to see price"
                  readonly>
@@ -332,7 +319,7 @@
 
       <!-- Pay & Register button -->
       <div class="text-center">
-        <button disabled id="registerButton" type="submit" class="btn btn-primary getstarted px-4">
+        <button id="registerButton" type="submit" class="btn btn-primary getstarted px-4">
           Register Now
         </button>
       </div>

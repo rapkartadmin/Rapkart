@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const base_url = "https://api.rapkart.in/"
+    // const base_url = "https://api.rapkart.in/"
+    const base_url = "http://localhost:8080/"
 
     const form = document.getElementById('registrationForm');
     const workshopRadios = document.querySelectorAll('input[name="workshop"]');
+    const modeRadios = document.querySelectorAll('input[name="classMode"]');
     const priceInput = document.getElementById('price');
     const collegeDetails = document.getElementById('collegeDetails');
     const otpInput = document.getElementById('otp');
@@ -14,15 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const fullNameFeild = document.getElementById("name")
     const mobileFeild = document.getElementById("phone")
     const emailIdFeild = document.getElementById("email")
-
-    const editMailBtn = document.getElementById("editMail")
-    const sendOtpBtn = document.getElementById("sendOtpBtn")
+    const seatsFeild = document.getElementById("ticketQnty")
 
     // 1. Category & Price Logic
     workshopRadios.forEach(radio => {
     radio.addEventListener('change', function() {
+            const modeChosen = document.querySelector('input[name="classMode"]:checked').value
             const isStudent = this.value.includes('STDNT');
-            priceInput.value = this.value === 'WRK_PROF' ? '750' : (this.value === 'GVT_STDNT' ? '450' : '600');
+            let calcAmt = this.value === 'WRK_PROF' ? 750 : (this.value === 'GVT_STDNT' ? 450 : 600);
+            if(modeChosen === "offline"){
+                calcAmt = calcAmt * 0.6;
+            }
+            priceInput.value = calcAmt
             collegeDetails.style.display = isStudent ? 'block' : 'none';
             // Clear specific college errors when switching to professional
             if(!isStudent) {
@@ -32,45 +37,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Send otp
-    sendOtpBtn.addEventListener('click',function(event){
-        const emailReceiver = emailIdFeild.value.trim()
+    modeRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+            const catgChosen = document.querySelector('input[name="workshop"]:checked').value
+            const isStudent = catgChosen.includes('STDNT');
+            let calcAmt = catgChosen === 'WRK_PROF' ? 750 : (catgChosen === 'GVT_STDNT' ? 450 : 600);
+            if(this.value === "offline"){
+                calcAmt = calcAmt * 0.6;
+            }
+            priceInput.value = calcAmt
+        });
+    });
 
-        // Patterns
-        const namePattern = /^[A-Za-z ]+$/;
-        const phonePattern = /^[6-9]\d{9}$/;
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        let isValid = true;
-
-        document.querySelectorAll(".text-danger").forEach((span,key) => (span.innerText = key<4?"":"*"));
-
-        // Validate Core Fields
-        if (!namePattern.test(document.getElementById("name").value.trim())) {
-            document.getElementById("nameError").innerText = "Letters and spaces only.";
-            isValid = false;
-        }
-        if (!phonePattern.test(document.getElementById("phone").value.trim())) {
-            document.getElementById("phoneError").innerText = "Must be 10 digits.";
-            isValid = false;
-        }
-        if (!document.querySelector('input[name="gender"]:checked')) {
-            document.getElementById("genderError").innerText = "Select gender.";
-            isValid = false;
-        }
-        if (!emailPattern.test(document.getElementById("email").value.trim())) {
-            document.getElementById("emailError").innerText = "Invalid email format.";
-            isValid = false;
-        }
-
-        if(!isValid){
-            return
-        }else{
-            checkEmail(emailReceiver)
-        }
-    })
-
-    function checkEmail(email){
+        function checkEmail(email){
         fetch(`${base_url}api/registration/check-email`,{
             method: 'POST', // Specify the HTTP method
             headers: {
@@ -97,11 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 registerButton.disabled = false
             }else{
                 // console.log("Check Email Response: ",json)
-                sendOtpBtn.disabled = true;
-                otpActionBtn.disabled = false;
-                editMailBtn.disabled = false;
-                emailIdFeild.readOnly = true;
-                sendOtp();
+                // sendOtpBtn.disabled = true;
+                // otpActionBtn.disabled = false;
+                // editMailBtn.disabled = false;
+                // emailIdFeild.readOnly = true;
+                // sendOtp();
             }
         })
         .catch((error)=>{
@@ -110,107 +89,65 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 
-    function sendOtp(){
-        document.getElementById("emailSuccess").innerText = ""
-        document.getElementById("emailError").innerText = "";
-        const emailReceiver = emailIdFeild.value.trim()
-        fetch(`${base_url}api/otp-mail/send-otp`,{
-            method: 'POST', // Specify the HTTP method
-            headers: {
-                'Content-Type': 'application/json' // Important
-            },
-            body: JSON.stringify({
-                "email":emailReceiver
-            }) // Convert your data to JSON format
-            })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text(); // For debugging
-            })
-            .then(text => {
-            // console.log('Response Text:', text);
-            const json = text ? JSON.parse(text) : {}; // Handle empty response
-            document.getElementById("emailSuccess").innerText = "Email Sent Check your spam folder too!"
-            })
-            .catch((error)=>{
-                document.getElementById("emailError").innerText = "Error Sending otp to your mail!";
-            })
-    }
-
-    editMailBtn.addEventListener('click',function(event){
-        otpActionBtn.disabled = true;
-        emailIdFeild.readOnly = false;
-        editMailBtn.disabled = true;
-        sendOtpBtn.disabled = false;
-        isOtpVerified = true;
-        otpActionBtn.className = 'btn btn-primary';
-        document.getElementById('otpIcon').className = 'bi bi-envelope-check-fill';
-        otpInput.readOnly = false;
-        otpInput.value = ""
-        document.getElementById('otpError').innerText = "*";
-        document.getElementById('otpStatus').innerText = "Generate OTP to verify your email";
-        registerButton.disabled = true;
-    })
-
-    // 2. OTP Button Logic
-    otpActionBtn.addEventListener('click', function() {
-        const emailReceiver = emailIdFeild.value.trim()
-        const val = otpInput.value.trim();
-        if (!val) {
-            otpActionBtn.className = 'btn btn-warning';
-            document.getElementById('otpError').innerText = "Please enter OTP.";
-            return;
-        }
-        // Mock verification: check if 123456
-        fetch(`${base_url}api/otp-mail/verify-otp`,{
-            method: 'POST', // Specify the HTTP method
-            headers: {
-                'Content-Type': 'application/json' // Important
-            },
-            body: JSON.stringify({
-                "email":emailReceiver,
-                "otp":val
-            }) // Convert your data to JSON format
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text(); // For debugging
-            })
-            .then(text => {
-                console.log('Response Text:', text);
-                const json = text ? JSON.parse(text) : {}; // Handle empty response
-                isOtpVerified = true;
-                otpActionBtn.className = 'btn btn-success';
-                document.getElementById('otpIcon').className = 'bi bi-check-circle text-white';
-                otpInput.readOnly = true;
-                document.getElementById('otpError').innerText = "";
-                document.getElementById('otpStatus').innerText = "Verified!";
-                registerButton.disabled = false;
-            })
-            .catch((error)=>{
-                otpActionBtn.className = 'btn btn-danger';
-                document.getElementById('otpIcon').className = 'class="bi bi-x-circle';
-                document.getElementById('otpError').innerText = "Invalid OTP";
-            })
-
-    });
-
     // 3. Final Submission Validation
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        let isValid = true;
+
+        const emailReceiver = emailIdFeild.value.trim()
+
+        // Patterns
+        const namePattern = /^[A-Za-z ]+$/;
+        const phonePattern = /^[6-9]\d{9}$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Reset all errors
         document.querySelectorAll(".text-danger").forEach(span => span.innerText = "");
 
-        if (!isOtpVerified) {
-            document.getElementById("otpError").innerText = "Verify OTP first.";
+        let isValid = true;
+
+        // Validate Core Fields
+        if (!namePattern.test(document.getElementById("name").value.trim())) {
+            document.getElementById("nameError").innerText = "Letters and spaces only.";
             isValid = false;
         }
+        if (!phonePattern.test(document.getElementById("phone").value.trim())) {
+            document.getElementById("phoneError").innerText = "Must be 10 digits.";
+            isValid = false;
+        }
+        if (!document.querySelector('input[name="gender"]:checked')) {
+            document.getElementById("genderError").innerText = "Select gender.";
+            isValid = false;
+        }
+        if (!emailPattern.test(document.getElementById("email").value.trim())) {
+            document.getElementById("emailError").innerText = "Invalid email format.";
+            isValid = false;
+        }
+
+        if(!isValid){
+            return
+        }else{
+            checkEmail(emailReceiver)
+        }
+
+        const selectedMode = document.querySelector('input[name="classMode"]:checked');
+
+        if(!selectedMode){
+            document.getElementById("classModeError").innerText = "Select Class Mode.";
+            isValid = false;
+        }else{
+            // put some percentage concession
+        }
+
+        const selectedLang = document.querySelector('input[name="classLanguage"]:checked');
+
+        if(!selectedLang){
+            document.getElementById("classLanguageError").innerText = "Select Class Language.";
+            isValid = false;
+        }else{
+            // put some percentage concession
+        }
+
+        const ticketNumber = Number(seatsFeild.value)
 
         // Validate Student Fields (if active)
         const selectedWorkshop = document.querySelector('input[name="workshop"]:checked');
