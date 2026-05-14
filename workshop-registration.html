@@ -119,8 +119,36 @@
       Workshop Details:
       <ul>
         <li>Instructor: <a href="https://anirudhkumaran.com/" target="_blank">Anirudh Kumaran</a></li>
-        <li>Venue: <a href="https://maps.app.goo.gl/wNirBrQj49shLhbg9" target="_blank">Janitha Towers, Landmark: Fortunes Trust, Avalahalli, Bangalore</a> </li>
-        <li>Schedule: Jan 31st 2026, 11:00 AM - 14:00 PM</li>
+        <li>Venue: <a href="https://maps.app.goo.gl/Sx94K4wxhu6GAMD86" target="_blank">Soundkraft Solutions, Begur, Bangalore</a> </li>
+        <li>
+          Schedule: 
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th style="text-align: left;">Language</th>
+                <th>Online</th>
+                <th>Offline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: left;">Kannada</td>
+                <td>26 May, 2026 07:30 PM - 08:30 PM</td>
+                <td>27 May, 2026 11:00 AM - 02:00 PM</td>  
+              </tr>
+              <tr>
+                <td style="text-align: left;">Tamil</td>
+                <td>28 May, 2026 07:30 PM - 08:30 PM</td>
+                <td>30 May, 2026 11:00 AM - 02:00 PM</td>  
+              </tr>
+              <tr>
+                <td style="text-align: left;">English</td>
+                <td>29 May, 2026 07:30 PM - 08:30 PM</td>
+                <td>31 May, 2026 11:00 AM - 02:00 PM</td>  
+              </tr>
+            </tbody>
+          </table>
+        </li>        
         <li>Mobile: <a href="tel:+918971356468">+91 89713 56468</a></li>
         <li>Email: <a href="mailto:support@rapkart.in">support@rapkart.in</a></li>
       </ul>
@@ -200,12 +228,12 @@
       <div class="mb-3">
         <label class="form-label fw-semibold d-block">Class Mode</label>
         <div class="form-check form-check-inline">
-          <input checked type="radio" id="online" name="classMode" value="online" class="form-check-input" required>
-          <label for="online" class="form-check-label">Online</label>
+          <input checked type="radio" id="offline" name="classMode" value="offline" class="form-check-input" required>
+          <label for="offline" class="form-check-label">Offline</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" id="offline" name="classMode" value="offline" class="form-check-input" required>
-          <label for="offline" class="form-check-label">Offline</label>
+          <input type="radio" id="online" name="classMode" value="online" class="form-check-input" required>
+          <label for="online" class="form-check-label">Online</label>
         </div>
         <div>
               <span id="classModeError" class="text-danger small">*</span>
@@ -279,7 +307,7 @@
         <div class="input-group">
           <span class="input-group-text">₹</span>
           <input type="text" id="price" name="price"
-                  value="750"
+                  value="540.00"
                  class="form-control fw-bold text-success"
                  placeholder="Select a category to see price"
                  readonly>
@@ -322,6 +350,7 @@
         <button id="registerButton" type="submit" class="btn btn-primary getstarted px-4">
           Register Now
         </button>
+        <span class="text-danger small d-block mt-2" id="registrationError"></span>
       </div>
     </form>
     <div class="shadow-lg card my-4 rounded"><div id="payment-gateway" class="row w-100 p-2 d-none">
@@ -357,11 +386,11 @@
         <input id="payuMobileNum" type="hidden" name="phone" value="8971356468"><br><br>
 
         <!-- Redirect URLs -->
-        <!-- <input type="hidden" name="surl" value="http://localhost:8080/payu/success">
-        <input type="hidden" name="furl" value="http://localhost:8080/payu/failure"> -->
+        <input type="hidden" name="surl" value="http://localhost:8080/payu/success">
+        <input type="hidden" name="furl" value="http://localhost:8080/payu/failure">
 
-          <input type="hidden" name="surl" value="https://api.rapkart.in/payu/success">
-          <input type="hidden" name="furl" value="https://api.rapkart.in/payu/failure">
+          <!-- <input type="hidden" name="surl" value="https://api.rapkart.in/payu/success">
+          <input type="hidden" name="furl" value="https://api.rapkart.in/payu/failure"> -->
 
         <div class="d-flex justify-content-between mt-2">
           <button onclick="cancelPayment()" class="btn btn-secondary" type="button">Cancel</button>

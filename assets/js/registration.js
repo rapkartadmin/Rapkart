@@ -18,38 +18,57 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailIdFeild = document.getElementById("email")
     const seatsFeild = document.getElementById("ticketQnty")
 
-    // 1. Category & Price Logic
+    const generalCost = 540;
+    const pvtColgStudent = 420;
+    const gvtColgStudent = 300;
+    const offlineDiscount = 0.25; // 25% discount for offline mode
+    const maxSeats = 10;
+
+    // Whether Working professional or student category is selected, show price and if student show college details
     workshopRadios.forEach(radio => {
     radio.addEventListener('change', function() {
-            const modeChosen = document.querySelector('input[name="classMode"]:checked').value
-            const isStudent = this.value.includes('STDNT');
-            let calcAmt = this.value === 'WRK_PROF' ? 750 : (this.value === 'GVT_STDNT' ? 450 : 600);
-            if(modeChosen === "offline"){
-                calcAmt = calcAmt * 0.6;
-            }
-            priceInput.value = calcAmt
-            collegeDetails.style.display = isStudent ? 'block' : 'none';
-            // Clear specific college errors when switching to professional
-            if(!isStudent) {
-                document.getElementById("collegeNameError").innerText = "";
-                document.getElementById("collegeFileError").innerText = "";
-            }
+        calucatePrice();
         });
     });
 
+    // offline or online mode is selected, change price accordingly
     modeRadios.forEach(radio => {
     radio.addEventListener('change', function() {
-            const catgChosen = document.querySelector('input[name="workshop"]:checked').value
-            const isStudent = catgChosen.includes('STDNT');
-            let calcAmt = catgChosen === 'WRK_PROF' ? 750 : (catgChosen === 'GVT_STDNT' ? 450 : 600);
-            if(this.value === "offline"){
-                calcAmt = calcAmt * 0.6;
-            }
-            priceInput.value = calcAmt
+        calucatePrice();
         });
     });
 
-        function checkEmail(email){
+    seatsFeild.addEventListener('change', function() {
+        calucatePrice();
+    });
+
+    function calucatePrice(){
+        const modeChosen = document.querySelector('input[name="classMode"]:checked').value
+        const catgChosen = document.querySelector('input[name="workshop"]:checked').value
+        const isStudent = catgChosen.includes('STDNT');
+        let calcAmt = catgChosen === 'WRK_PROF' ? generalCost : (catgChosen === 'GVT_STDNT' ? gvtColgStudent : pvtColgStudent);
+        if(modeChosen !== "offline"){
+            calcAmt = calcAmt * offlineDiscount;
+        }
+
+        const seatCount = Number(seatsFeild.value);
+        if(seatCount < 1){
+            seatsFeild.value = 1;
+        }else if(seatCount > maxSeats){
+            seatsFeild.value = maxSeats;
+        }
+
+        priceInput.value = (calcAmt * seatsFeild.value).toFixed(2);
+
+        collegeDetails.style.display = isStudent ? 'block' : 'none';
+        // Clear specific college errors when switching to professional
+        if(!isStudent) {
+            document.getElementById("collegeNameError").innerText = "";
+            document.getElementById("collegeFileError").innerText = "";
+        }
+    }
+
+    function checkEmail(email){
         fetch(`${base_url}api/registration/check-email`,{
             method: 'POST', // Specify the HTTP method
             headers: {
@@ -72,8 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if(json["message"]==="Email Already Verified"){
                 document.getElementById("emailSuccess").innerText = "Email ID Already verified";
-                isOtpVerified = true
-                registerButton.disabled = false
             }else{
                 // console.log("Check Email Response: ",json)
                 // sendOtpBtn.disabled = true;
@@ -81,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // editMailBtn.disabled = false;
                 // emailIdFeild.readOnly = true;
                 // sendOtp();
+                document.getElementById("emailSuccess").innerText = "Email ID is available";
             }
         })
         .catch((error)=>{
@@ -92,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. Final Submission Validation
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-
+        document.getElementById("registrationError").innerText = "";
         const emailReceiver = emailIdFeild.value.trim()
 
         // Patterns
@@ -125,9 +143,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if(!isValid){
             return
-        }else{
-            checkEmail(emailReceiver)
         }
+        // else{
+        //     checkEmail(emailReceiver)
+        // }
 
         const selectedMode = document.querySelector('input[name="classMode"]:checked');
 
@@ -204,6 +223,9 @@ document.addEventListener('DOMContentLoaded', function() {
             submitData.append("emailId",parEmail)
             submitData.append("category",parCategory)
             submitData.append("totalAmount",parTotalAmt)
+            submitData.append("ticketQnty",ticketNumber)
+            submitData.append("classMode",selectedMode.value.trim())
+            submitData.append("classLanguage",selectedLang.value.trim())
 
             if(parCategory !== "WRK_PROF"){
                 submitData.append("colgName",parColgName)
@@ -214,9 +236,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST', // Specify the HTTP method
                 body: submitData // Convert your data to JSON format
             })
-            .then(response => {
+            .then(async response => {
                 if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+                    const errorText = await response.text().then(text => (text))
+                    throw new Error(errorText || `HTTP error! Status: ${response.status}`);
                 }
                 return response.text(); // For debugging
             })
@@ -225,10 +248,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 const json = text ? JSON.parse(text) : {}; // Handle empty response
                 console.log('Parsed JSON:', json);
                 fetchHashCode(hashjson)
-
             })
             .catch(error => {
-                console.log("error:",error)
+                // console.log("error:",JSON.parse(error.message).message)
+                const messageValue = JSON.parse(error.message).message
+                if(messageValue === "Participant already exist"){
+                    document.getElementById("registrationError").innerText = "Email ID already registered, kindly use a different email or contact support.";
+                }else if(messageValue === "Dirty Values"){
+                    document.getElementById("registrationError").innerText = "Some of the input values are invalid, please review and correct them.";    
+                }else if(messageValue === "ID proof file required"){
+                    document.getElementById("registrationError").innerText = "ID proof file is required for student category, please upload the file and try again.";
+                }else{
+                    document.getElementById("registrationError").innerText = "Error from server.";
+                }
+                
                 // changeSteps("form_failure")
             });
 
