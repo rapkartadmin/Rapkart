@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(text => {
             // console.log('Response Text:', text);
             const json = text ? JSON.parse(text) : {}; // Handle empty response
-            console.log('Parsed JSON:', json);
+            // console.log('Parsed JSON:', json);
 
             if(json["message"]==="Email Already Verified"){
                 document.getElementById("emailSuccess").innerText = "Email ID Already verified";
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(text => {
                 // console.log('Response Text:', text);
                 const json = text ? JSON.parse(text) : {}; // Handle empty response
-                console.log('Parsed JSON:', json);
+                // console.log('Parsed JSON:', json);
                 fetchHashCode(hashjson)
             })
             .catch(error => {
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // console.log('Response Text:', text);
             const json = text ? JSON.parse(text) : {}; // Handle empty response
             // console.log('Parsed JSON:', json);
-            console.log("Hash Response: ",json)
+            // console.log("Hash Response: ",json)
             paymentAction(params,json)
         })
         .catch((error)=>{
